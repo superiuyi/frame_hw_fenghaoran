@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/fenghaoran/framework_fenghaoran/board/build/Debug/cmake_install.cmake",
+		"/Users/fenghaoran/framework_fenghaoran/board/build/Debug/cmake/stm32cubemx/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
