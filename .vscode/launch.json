@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "烧录并调试 (ST-Link + OpenOCD)",
+      "type": "cortex-debug",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/board",
+      "executable": "${workspaceFolder}/board/build/Debug/board.elf",
+      "servertype": "openocd",
+      "serverpath": "/opt/homebrew/bin/openocd",
+      "armToolchainPath": "/usr/local/bin",
+      "searchDir": ["/opt/homebrew/share/openocd/scripts"],
+      "configFiles": [
+        "interface/stlink.cfg",
+        "target/stm32f4x.cfg"
+      ],
+      "runToEntryPoint": "main",
+      "showDevDebugOutput": "none"
+    }
+  ]
+}
