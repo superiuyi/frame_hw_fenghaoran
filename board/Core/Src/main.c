@@ -107,6 +107,15 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    HAL_GPIO_TogglePin(GPIOH,GPIO_PIN_10);
+    HAL_Delay(500);
+    HAL_GPIO_TogglePin(GPIOH,GPIO_PIN_10);
+    HAL_GPIO_TogglePin(GPIOH,GPIO_PIN_11);
+    HAL_Delay(500);
+    HAL_GPIO_TogglePin(GPIOH,GPIO_PIN_11);
+    HAL_GPIO_TogglePin(GPIOH,GPIO_PIN_12);
+    HAL_Delay(500);
+    HAL_GPIO_TogglePin(GPIOH,GPIO_PIN_12);
   }
   /* USER CODE END 3 */
 }
