@@ -19,3 +19,13 @@
 **结果**:VSCode 内可一键编译、F5 烧录并停在 main()。
 首次烧录输出 `** Verified OK **`,MSP = 0x20020000 与链接脚本
 的 RAM 顶端(128KB)一致。
+
+## 10-06 串口通信出现的问题以及解决方案
+C板上的晶振频率是12MHz我误以为是25MHz
+导致验证usart的时候串口打印乱码
+
+## 10-06 今日小结
+理解了spi iic 和 usart的内在机理
+解决了 vscode 环境配置 vscode. settings.json launch.json的问题 PATH的配置问题
+实现了串口的验证
+通过串口打印检查出
