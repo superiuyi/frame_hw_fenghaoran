@@ -1,0 +1,5 @@
+/Users/fenghaoran/framework_fenghaoran/modules/src/DJIMotorHandler.cpp:3:6:void DJIMotorHandler::registerMotor(DJIMotor*, CAN_HandleTypeDef*, uint16_t)	24	static
+/Users/fenghaoran/framework_fenghaoran/modules/src/DJIMotorHandler.cpp:12:6:void DJIMotorHandler::sendControlData()	16	static
+/Users/fenghaoran/framework_fenghaoran/modules/src/DJIMotorHandler.cpp:18:6:void DJIMotorHandler::updateFeedback(CAN_HandleTypeDef*, uint8_t*, int)	24	static
+/Users/fenghaoran/framework_fenghaoran/modules/src/DJIMotorHandler.cpp:26:6:void DJIMotorHandler::UpdateSensorData(DJIMotor*, uint8_t*)	24	static
+/Users/fenghaoran/framework_fenghaoran/modules/src/DJIMotorHandler.cpp:34:6:void DJIMotorHandler::AllMotorAliveCheck()	16	static
