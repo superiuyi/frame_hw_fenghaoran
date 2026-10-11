@@ -1,0 +1,9 @@
+/Users/fenghaoran/framework_fenghaoran/board/../modules/include/DJIMotorHandler.hpp:54:29:static DJIMotorHandler* DJIMotorHandler::Instance()	4	static
+/Users/fenghaoran/framework_fenghaoran/threads/src/controlthread.cpp:15:13:void control_thread_entry(ULONG)	16	static
+/Users/fenghaoran/framework_fenghaoran/threads/src/controlthread.cpp:32:6:void ControlThread_Init()	40	static
+/Users/fenghaoran/framework_fenghaoran/board/../modules/include/DJIMotor.hpp:87:13:DJIMotor::~DJIMotor()	16	static
+/Users/fenghaoran/framework_fenghaoran/board/../modules/include/DJIMotor.hpp:87:13:virtual DJIMotor::~DJIMotor()	16	static
+/Users/fenghaoran/framework_fenghaoran/board/../modules/include/M2006.hpp:27:5:M2006::~M2006()	16	static
+/Users/fenghaoran/framework_fenghaoran/board/../modules/include/M2006.hpp:27:5:virtual M2006::~M2006()	16	static
+/Users/fenghaoran/framework_fenghaoran/threads/src/controlthread.cpp:39:1:void __static_initialization_and_destruction_0()	8	static
+/Users/fenghaoran/framework_fenghaoran/threads/src/controlthread.cpp:39:1:cpp)	8	static

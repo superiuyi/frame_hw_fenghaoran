@@ -1,2 +1,4 @@
+/Users/fenghaoran/framework_fenghaoran/board/../modules/include/DJIMotorHandler.hpp:54:29:static DJIMotorHandler* DJIMotorHandler::Instance()	4	static
 /Users/fenghaoran/framework_fenghaoran/bsp/src/bsp_can.cpp:11:6:void CAN_Init()	48	static
-/Users/fenghaoran/framework_fenghaoran/bsp/src/bsp_can.cpp:35:6:void CAN_Transmit(CAN_HandleTypeDef*, uint32_t, uint8_t*, uint16_t)	24	static
+/Users/fenghaoran/framework_fenghaoran/bsp/src/bsp_can.cpp:35:6:void CAN_Transmit(CAN_HandleTypeDef*, uint32_t, uint8_t*, uint16_t)	56	static
+/Users/fenghaoran/framework_fenghaoran/bsp/src/bsp_can.cpp:63:6:void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef*)	56	static
