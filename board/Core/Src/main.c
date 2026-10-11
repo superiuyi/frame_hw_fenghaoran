@@ -117,7 +117,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     uint8_t ch = 'A';
-HAL_UART_Transmit(&huart6, &ch, 1, 1000);
+    HAL_UART_Transmit(&huart6, &ch, 1, 1000);
     HAL_GPIO_TogglePin(GPIOH,GPIO_PIN_10);
     HAL_Delay(500);
     HAL_GPIO_TogglePin(GPIOH,GPIO_PIN_10);

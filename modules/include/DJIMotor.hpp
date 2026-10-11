@@ -62,9 +62,10 @@ public:
     uint16_t canId;                   ///< 电机的CAN通信ID
     CAN_HandleTypeDef *hcan;          ///< 指向电机使用的CAN接口的指针
 
-    PID speedPid = PID(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, PID_POSITION); ///< TODO: 配置速度环参数
-    PID positionPid = PID(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, PID_POSITION); ///< TODO: 配置位置环参数
-
+    // modules/include/DJIMotor.hpp:65-66
+    PID speedPid    = PID(3.0f, 0.3f, 0.0f, 10000.0f, 3000.0f, PID_POSITION);
+    //                   ↑kp   ↑ki   ↑kd  ↑maxOut  ↑maxIOut
+    PID positionPid = PID(5.0f, 0.0f, 20.0f,  100.0f,    0.0f, PID_POSITION);
     float speedSet;    ///< 设定的目标速度
     float positionSet; ///< 设定的目标位置，范围[-Π, Π]
 

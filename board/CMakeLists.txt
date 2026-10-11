@@ -62,6 +62,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 
     # threads 层
     ${CMAKE_CURRENT_SOURCE_DIR}/../threads/src/alivethread.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/../threads/src/controlthread.cpp    
 )
 
 # Add include paths

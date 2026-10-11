@@ -18,10 +18,25 @@ void PID::UpdateResult()
     err[2] = err[1];
     err[1] = err[0];
     err[0] = ref - fdb;
-
-    // TODO: 按 mode 实现位置式或增量式 PID，并限制积分和最终输出。
+    if (mode == PID_POSITION)
+        {
+            pResult = kp * err[0];
+            iResult += ki * err[0];
+            if (iResult >  maxIOut) iResult =  maxIOut;
+            if (iResult < -maxIOut) iResult = -maxIOut;
+            dResult = kd * (err[0] - err[1]);
+            result = pResult + iResult + dResult;
+        }
+        else
+        {
+            float delta = kp * (err[0] - err[1])
+                        + ki * err[0]
+                        + kd * (err[0] - 2.0f * err[1] + err[2]);
+            result += delta;
+        }
+        if (result >  maxOut) result =  maxOut;
+        if (result < -maxOut) result = -maxOut;
     // 完成前始终保持零输出。
-    pResult = iResult = dResult = result = 0.0f;
 }
 
 void PID::Clear()
