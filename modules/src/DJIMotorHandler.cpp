@@ -7,12 +7,78 @@ void DJIMotorHandler::registerMotor(DJIMotor *motor, CAN_HandleTypeDef *hcan, ui
     (void)motor;
     (void)hcan;
     (void)canId;
+      // ---------- ① 校验 ----------
+    if (motor == nullptr || hcan == nullptr) return;
+    if (canId < 0x201 || canId > 0x208) return;
+    // ---------- ② 算总线 + 槽位 ----------
+    int bus   = (hcan->Instance == CAN1) ? 0 : 1;
+    int index = canId - 0x201;
+    // ---------- ③ 存指针 ----------
+    DJIMotorList[bus][index] = motor;
+    motor->hcan  = hcan;
+    motor->canId = canId;
+    // ---------- ④ 设标志 ----------
+    if (bus == 0) {
+        if (index < 4) CAN1_0x200_Exist = true;
+        else           CAN1_0x1FF_Exist = true;
+    } else {
+        if (index < 4) CAN2_0x200_Exist = true;
+        else           CAN2_0x1FF_Exist = true;
+    }
 }
 
 void DJIMotorHandler::sendControlData()
 {
     // TODO: 将各电机 currentSet 按大端序放入正确的 8 字节控制帧。
     // TODO: 仅发送包含已注册电机的报文；未完成前不发送 CAN 电流命令。
+       // ---------- CAN1 / 0x200(电机1~4) ----------
+    if (CAN1_0x200_Exist)                     // ① 有电机才发
+    {
+        for (int i = 0; i < 4; i++)           // ② 遍历 4 个槽位
+        {
+            DJIMotor *m = DJIMotorList[0][i];                // ③ 取指针
+            int16_t c = (m != nullptr) ? m->currentSet : 0;  // ④ 空槽位发 0
+            can1_send_data_0[i * 2]     = (uint8_t)(c >> 8);     // ⑤ 高字节
+            can1_send_data_0[i * 2 + 1] = (uint8_t)(c & 0xFF);   //    低字节
+        }
+        CAN_Transmit(&hcan1, 0x200, can1_send_data_0, 8);        // ⑥ 发
+    }
+    // ---------- CAN1 / 0x1FF(电机5~8) ----------
+    if (CAN1_0x1FF_Exist)                     // ★ 独立的 if,不是 else if
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            DJIMotor *m = DJIMotorList[0][i + 4];   // ★ 槽位 +4
+            int16_t c = (m != nullptr) ? m->currentSet : 0;
+            can1_send_data_1[i * 2]     = (uint8_t)(c >> 8);
+            can1_send_data_1[i * 2 + 1] = (uint8_t)(c & 0xFF);
+        }
+        CAN_Transmit(&hcan1, 0x1FF, can1_send_data_1, 8);
+    }
+    // ---------- CAN2 / 0x200 ----------
+    if (CAN2_0x200_Exist)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            DJIMotor *m = DJIMotorList[1][i];
+            int16_t c = (m != nullptr) ? m->currentSet : 0;
+            can2_send_data_0[i * 2]     = (uint8_t)(c >> 8);
+            can2_send_data_0[i * 2 + 1] = (uint8_t)(c & 0xFF);
+        }
+        CAN_Transmit(&hcan2, 0x200, can2_send_data_0, 8);
+    }
+    // ---------- CAN2 / 0x1FF ----------
+    if (CAN2_0x1FF_Exist)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            DJIMotor *m = DJIMotorList[1][i + 4];
+            int16_t c = (m != nullptr) ? m->currentSet : 0;
+            can2_send_data_1[i * 2]     = (uint8_t)(c >> 8);
+            can2_send_data_1[i * 2 + 1] = (uint8_t)(c & 0xFF);
+        }
+        CAN_Transmit(&hcan2, 0x1FF, can2_send_data_1, 8);
+    }
 }
 
 void DJIMotorHandler::updateFeedback(CAN_HandleTypeDef *hcan, uint8_t *rx_data, int index)
