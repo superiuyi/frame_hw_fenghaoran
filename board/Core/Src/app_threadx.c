@@ -20,9 +20,13 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "app_threadx.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "main.h"
+
+#include "bsp.hpp"          // ← 加
+#include "threads.hpp"      // ← 加
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,6 +68,8 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
 
   /* USER CODE BEGIN App_ThreadX_Init */
   (void)byte_pool;
+  bsp_Init();              // ★ 加这行 —— CAN 才能启动
+  ControlThread_Init();    // ★ 加这行 —— 才有控制线程
   tx_thread_create(&test_thread,           // ① 控制块地址
                    "test",                 // ② 线程名(调试时能看到)
                    test_thread_entry,      // ③ 入口函数

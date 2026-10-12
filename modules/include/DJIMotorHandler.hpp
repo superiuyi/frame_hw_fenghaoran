@@ -2,7 +2,6 @@
 #define DJIMOTORHANDLER_HPP
 
 #include "DJIMotor.hpp"
-
 /**
  * @brief 电机控制类
  */
