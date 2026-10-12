@@ -8,7 +8,7 @@
 M2006 motor;
 TX_THREAD control_thread;
 static UCHAR control_stack[1024];
-
+//从main.c threadx_init开始，然后进入control_thread_entry
 static void control_thread_entry(ULONG input)
 {
     (void)input;
