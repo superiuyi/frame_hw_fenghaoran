@@ -29,3 +29,5 @@ C板上的晶振频率是12MHz我误以为是25MHz
 解决了 vscode 环境配置 vscode. settings.json launch.json的问题 PATH的配置问题
 实现了串口的验证
 通过串口打印检查出
+
+## 10-12 jin t

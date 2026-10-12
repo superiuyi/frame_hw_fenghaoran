@@ -22,10 +22,10 @@
 166	432	1791627527700999089	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/bsp/src/bsp.cpp.obj	bd4cee9df165204f
 275	335	1791627527810742575	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/threads/src/alivethread.cpp.obj	db15cc479c7ac345
 176	429	1791627527710942569	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/bsp/src/bsp_usart.cpp.obj	3eefd9638d7f06e0
-5	163	1791710501158285839	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/bsp/src/bsp_can.cpp.obj	6ae9a12e94194149
+3	159	1791814414373563323	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/bsp/src/bsp_can.cpp.obj	6ae9a12e94194149
 174	425	1791627527709540447	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/bsp/src/bsp_pwm.cpp.obj	e401239fd7c50170
-5	169	1791710501158544716	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/modules/src/DJIMotorHandler.cpp.obj	6b01b7e6cef6163a
-5	167	1791710501158785176	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/modules/src/M2006.cpp.obj	f7e79b1c80ab639
+3	162	1791814414373824156	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/modules/src/DJIMotorHandler.cpp.obj	6b01b7e6cef6163a
+3	162	1791814414373939823	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/modules/src/M2006.cpp.obj	f7e79b1c80ab639
 335	454	1791627527870202079	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	632914e406cdb540
 10	208	1791688143805441414	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj	e8a9da8ed63715cd
 10	220	1791688143805572707	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj	3f4d1e4974e60f2f
@@ -212,7 +212,8 @@
 342	377	1791705139019372946	cmake/stm32cubemx/CMakeFiles/ThreadX.dir/__/__/Middlewares/ST/threadx/common/src/txe_timer_deactivate.c.obj	21670a866eee95db
 346	379	1791705139022837752	cmake/stm32cubemx/CMakeFiles/ThreadX.dir/__/__/Middlewares/ST/threadx/common/src/txe_timer_info_get.c.obj	32df39c2d8369b9b
 344	377	1791705139021059016	cmake/stm32cubemx/CMakeFiles/ThreadX.dir/__/__/Middlewares/ST/threadx/common/src/txe_timer_delete.c.obj	9e53fc1b8bb43339
-176	403	1791712037054050677	board.elf	50966ae4adf9e483
-7	176	1791712036884444667	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/threads/src/controlthread.cpp.obj	7922329dc50f06b2
-4	190	1791810390507832645	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/threads/src/controlthread.cpp.obj	7922329dc50f06b2
-190	437	1791810390693723839	board.elf	50966ae4adf9e483
+162	401	1791814414532802036	board.elf	7dbe8a1a3867f53b
+3	162	1791814414374044739	CMakeFiles/board.dir/Users/fenghaoran/framework_fenghaoran/threads/src/controlthread.cpp.obj	7922329dc50f06b2
+1	79	1791814959037490554	build.ninja	9124854e23fdb3fc
+1	79	1791814959028168615	/Users/fenghaoran/framework_fenghaoran/board/build/Debug/cmake_install.cmake	9124854e23fdb3fc
+1	79	1791814959036425098	/Users/fenghaoran/framework_fenghaoran/board/build/Debug/cmake/stm32cubemx/cmake_install.cmake	9124854e23fdb3fc
