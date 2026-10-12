@@ -18,6 +18,7 @@ enum GearBox
  *
  * 保留速度、位置控制所需的状态；控制计算由派生类完成。
  */
+ // 对象motor的信息！！！！！
 class DJIMotor
 {
 public:
@@ -63,7 +64,7 @@ public:
     CAN_HandleTypeDef *hcan;          ///< 指向电机使用的CAN接口的指针
 
     // modules/include/DJIMotor.hpp:65-66
-    PID speedPid    = PID(0.5f, 0.0f, 0.0f, 2000.0f, 0.0f, PID_POSITION);
+    PID speedPid    = PID(200.0f, 5.0f, 0.0f, 3000.0f, 1000.0f, PID_POSITION);
     //                   ↑kp   ↑ki   ↑kd  ↑maxOut  ↑maxIOut
     PID positionPid = PID(5.0f, 0.0f, 20.0f,  100.0f,    0.0f, PID_POSITION);
     float speedSet;    ///< 设定的目标速度

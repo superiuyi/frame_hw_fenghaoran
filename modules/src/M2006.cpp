@@ -7,8 +7,8 @@ M2006::M2006()
     gearBox    = GearBox_M2006;   // 减速比 36:1
     maxCurrent = 10000;           // ⚠️ 查 C610 手册确认
     // PID 参数(kp/ki/kd 也可以直接写进 DJIMotor.hpp:65-66)
-    speedPid.Tuning(3.0f, 0.3f, 0.0f);
-    positionPid.Tuning(5.0f, 0.0f, 20.0f);
+    //speedPid.Tuning(3.0f, 0.3f, 0.0f);
+  //  positionPid.Tuning(5.0f, 0.0f, 20.0f);
 }
 
 void M2006::setOutput()

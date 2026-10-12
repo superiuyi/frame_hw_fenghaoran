@@ -13,8 +13,8 @@ static void control_thread_entry(ULONG input)
 {
     (void)input;
 
-    motor.controlMode = DJIMotor::RELAX_MODE;   // ★ 第一步先松开!
-    motor.speedSet    = 0.0f;
+    motor.controlMode = DJIMotor::SPD_MODE;   // ★ 第一步先松开!
+    motor.speedSet    = 5.0f;
 
     while (1)
     {
@@ -26,9 +26,10 @@ static void control_thread_entry(ULONG input)
         {
             cnt = 0;
             char buf[64];
-            int n = snprintf(buf, sizeof(buf), "rpm=%d  rad/s=%.2f\r\n",
-                             motor.motorFeedback.speed_rpm,
-                             motor.motorFeedback.speedFdb);
+            int n = snprintf(buf, sizeof(buf), "rpm=%d  rad/s=%.2f  out=%d\r\n",
+                         motor.motorFeedback.speed_rpm,
+                         motor.motorFeedback.speedFdb,
+                         motor.currentSet);          // ★ 加上这个
             HAL_UART_Transmit(&huart6, (uint8_t*)buf, n, 100);
         }
 
@@ -38,7 +39,7 @@ static void control_thread_entry(ULONG input)
 
 void ControlThread_Init()
 {
-    DJIMotorHandler::Instance()->registerMotor(&motor, &hcan1, 0x201);
+    DJIMotorHandler::Instance()->registerMotor(&motor, &hcan1, 0x201);//在这个地方记录了把M2006 motor传进了Instance
 
     tx_thread_create(&control_thread, (CHAR *)"control", control_thread_entry, 0,
                      control_stack, sizeof(control_stack),
