@@ -59,6 +59,9 @@ static void imu_thread_entry(ULONG input)
         imu.ReadAccData(&acc);
         imu.ReadGyroData(&gyro);
         imu.ReadAccTemperature(&temp);
+        imu.VerifyAccData();      
+        imu.VerifyGyroData();     // ← 加这里
+
         char b[128];
         int m = snprintf(b, sizeof(b),
                          "[IMU] a=%.2f,%.2f,%.2f  g=%.2f,%.2f,%.2f  t=%.1f\r\n",
