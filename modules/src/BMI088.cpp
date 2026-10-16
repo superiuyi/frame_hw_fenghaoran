@@ -80,8 +80,7 @@ namespace BMI088
     if (duty < 0.0f) duty = 0.0f;   // 温度超了 → 不加热
     if (duty > 1.0f) duty = 1.0f;
     // ⑤ 写进 PWM
-        PWM_SetDutyRatio(&HEATING_RESISTANCE_TIM, 0.0f, HEATING_RESISTANCE_CHANNEL);
-   
+PWM_SetDutyRatio(&HEATING_RESISTANCE_TIM, duty, HEATING_RESISTANCE_CHANNEL);   
     }
 
     void cBMI088::VerifyAccChipID()
