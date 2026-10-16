@@ -35,7 +35,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 90,
+				"line" : 92,
 				"parent" : 0
 			},
 			{
@@ -50,13 +50,13 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 85,
+				"line" : 87,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 69,
+				"line" : 71,
 				"parent" : 0
 			},
 			{
@@ -387,7 +387,8 @@
 				25,
 				26,
 				27,
-				28
+				28,
+				29
 			]
 		}
 	],
@@ -491,7 +492,8 @@
 				25,
 				26,
 				27,
-				28
+				28,
+				29
 			]
 		},
 		{
@@ -506,7 +508,6 @@
 			"name" : "Object Libraries",
 			"sourceIndexes" : 
 			[
-				29,
 				30,
 				31,
 				32,
@@ -690,7 +691,8 @@
 				210,
 				211,
 				212,
-				213
+				213,
+				214
 			]
 		}
 	],
@@ -984,6 +986,16 @@
 			],
 			"compileGroupIndex" : 2,
 			"path" : "/Users/fenghaoran/framework_fenghaoran/threads/src/controlthread.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 8,
+			"backtraces" : 
+			[
+				8
+			],
+			"compileGroupIndex" : 2,
+			"path" : "/Users/fenghaoran/framework_fenghaoran/threads/src/imuthread.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

@@ -232,6 +232,7 @@ _skip_vfp_restore:
        are disabled to allow use of WFI for waiting for a thread to arrive.  */
 
 __tx_ts_wait:
+
     CPSID   i                                       // Disable interrupts
     LDR     r1, [r2]                                // Pickup the next thread to execute pointer
     STR     r1, [r0]                                // Store it in the current pointer

@@ -1,0 +1,2 @@
+/Users/fenghaoran/framework_fenghaoran/threads/src/alivethread.cpp:16:6:void AliveThread_Init()	40	static
+/Users/fenghaoran/framework_fenghaoran/threads/src/alivethread.cpp:28:13:void alive_thread_entry(ULONG)	24	static
