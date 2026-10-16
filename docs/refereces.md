@@ -2,7 +2,7 @@ B站UP主:
 爱上半导体(通信协议部分)
 keysking(通信协议部分)
 Ross-Ning（双环PID控制）
-
+看懂工作室（麦轮）
 学习途径：
 c++（deepseek）
 threadx(deepseek)
