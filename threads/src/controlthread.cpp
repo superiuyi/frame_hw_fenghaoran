@@ -20,7 +20,7 @@ static void control_thread_entry(ULONG input)
     {
         motor.setOutput();
         DJIMotorHandler::Instance()->sendControlData();
-
+        tx_semaphore_put(&sem_control);
         static int cnt = 0;
         if (++cnt >= 100)
         {

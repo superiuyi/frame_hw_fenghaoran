@@ -30,4 +30,27 @@ C板上的晶振频率是12MHz我误以为是25MHz
 实现了串口的验证
 通过串口打印检查出
 
-## 10-12 jin t
+## 10-12 今日小结
+坑 1  CAN_Transmit 缺 include(卡了两次)
+
+坑 2  残留 openocd 占着 ST-Link → VSCode F5 报
+      "GDB Server Quit Unexpectedly"
+      解法:pkill -f openocd
+
+坑 3  串口没输出 → 丝印 UART1/UART2 是反的
+
+坑 4  rad/s 打印空白 → newlib-nano 默认不支持浮点 printf
+      解法:链接加 -u _printf_float
+
+坑 5  ★ PID 参数设了两处
+      M2006.cpp 的 Tuning() 覆盖了 DJIMotor.hpp 的值
+
+坑 6  ★ maxIOut = 0 让积分【静默失效】
+      Ki 设了也白设,输出等于纯 P
+      ← 踩了两次
+
+坑 7  Kp = 0.5 / 3.0 太小
+      err=5 → 输出 2 / 15,推不动电机
+      改成 200 才行
+
+坑 8  200f 不是合法浮点字面量,要写 200.0f

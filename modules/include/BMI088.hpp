@@ -2,7 +2,6 @@
 #define BMI088_HPP
 
 #include "IMU.hpp"
-
 namespace BMI088
 {
 /**

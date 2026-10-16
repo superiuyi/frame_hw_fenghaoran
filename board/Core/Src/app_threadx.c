@@ -46,7 +46,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-TX_THREAD test_thread;                    // 线程控制块
+//TX_THREAD test_thread;                    // 线程控制块
 static UCHAR test_stack[1024];            // 给它 1KB 栈
 
 /* USER CODE END PV */
@@ -70,7 +70,10 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   (void)byte_pool;
   bsp_Init();              // ★ 加这行 —— CAN 才能启动
   ControlThread_Init();    // ★ 加这行 —— 才有控制线程
-  tx_thread_create(&test_thread,           // ① 控制块地址
+  ImuThread_Init();               // ← 加这行
+
+  AliveThread_Init(); 
+  /*tx_thread_create(&test_thread,           // ① 控制块地址
                    "test",                 // ② 线程名(调试时能看到)
                    test_thread_entry,      // ③ 入口函数
                    0,                      // ④ 传给入口函数的参数
@@ -80,7 +83,8 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
                    5,                      // ⑧ 抢占阈值(不用时=优先级)
                    TX_NO_TIME_SLICE,       // ⑨ 时间片(不用)
                    TX_AUTO_START);         // ⑩ 创建后立刻启动
-  /* USER CODE END App_ThreadX_Init */
+*/
+                   /* USER CODE END App_ThreadX_Init */
 
   return ret;
 }
@@ -104,6 +108,7 @@ void MX_ThreadX_Init(void)
 }
 
 /* USER CODE BEGIN 1 */
+/*
 static void test_thread_entry(ULONG thread_input)
 {
     (void)thread_input;          // 参数没用,消掉编译警告
@@ -113,4 +118,5 @@ static void test_thread_entry(ULONG thread_input)
         tx_thread_sleep(500);                      // 睡 500 个 tick = 500ms
     }
 }
+    */
 /* USER CODE END 1 */
