@@ -65,7 +65,23 @@ namespace BMI088
         // TODO: 温度读取完成后，用 TempPid 计算加热占空比并限制到 [0, 1]。
         // 未完成前保持加热关闭。
         (void)target_temp;
+          // ① 读当前温度
+    float temp = 0.0f;
+    ReadAccTemperature(&temp);
+    // ② 喂给 PID
+    TempPid.ref = target_temp;     // 目标温度(比如 40℃)
+    TempPid.fdb = temp;            // 当前温度
+    TempPid.UpdateResult();        // 算一次
+    // ③ PID 输出范围是 [-maxOut, +maxOut] = [-25000, +25000]
+    //    要映射成占空比 [0, 1]
+    float duty = TempPid.result / TempPid.maxOut;
+    //           ↑              ↑ 25000.0f
+    // ④ 限幅
+    if (duty < 0.0f) duty = 0.0f;   // 温度超了 → 不加热
+    if (duty > 1.0f) duty = 1.0f;
+    // ⑤ 写进 PWM
         PWM_SetDutyRatio(&HEATING_RESISTANCE_TIM, 0.0f, HEATING_RESISTANCE_CHANNEL);
+   
     }
 
     void cBMI088::VerifyAccChipID()
@@ -106,11 +122,43 @@ namespace BMI088
     void cBMI088::VerifyAccData()
     {
         // TODO: 检查加速度数据是否有效，并更新 ACC_DATA_ERR。
+             uint8_t buf[2];
+    ReadReg(BMI088_CS_ACC, ACC_ERR_REG_ADDR, buf, 2);
+    //                    ↑ 0x02
+    //   为什么读 2 字节?
+    //   因为【加速度计读操作】第一个字节是废字节
+    //   buf[0] = 废   buf[1] = 真正的寄存器值
+    //   (和 VerifyAccChipID 一模一样)
+    if ((buf[1] & 0xC0) != 0)
+    //            ↑ 0xC0 = 1100 0000
+    //              同时检查 bit7 和 bit6
+    //   & 之后不等于 0 → 说明有一位是 1 → 有错误
+    {
+        self_test.ACC_DATA_ERR = true;
+    }
+    else
+    {
+        self_test.ACC_DATA_ERR = false;
+    }    
     }
 
     void cBMI088::VerifyGyroData()
     {
         // TODO: 检查角速度数据是否有效，并更新 GYRO_DATA_ERR。
+            uint8_t buf;
+    ReadReg(BMI088_CS_GYRO, GYRO_INT_STAT_1_ADDR, &buf, 1);
+    //                       ↑ 0x0A
+    //   陀螺仪读 1 字节,【没有废字节】
+    //   buf 是单个变量,要取地址 &
+    if ((buf & 0x80) != 0)
+    //         ↑ 0x80 = 1000 0000,只看 bit7
+    {
+        self_test.GYRO_DATA_ERR = false;   // 有新数据 → 正常
+    }
+    else
+    {
+        self_test.GYRO_DATA_ERR = true;    // 没数据 → 异常
+    }
     }
 
     void cBMI088::WriteReg(enum BMI088_SENSOR cs, uint8_t addr, uint8_t *data, uint8_t len)
